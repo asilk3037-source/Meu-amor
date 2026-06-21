@@ -1,0 +1,29 @@
+COMO ADICIONAR FOTOS — site "Bell & Line"
+=========================================
+
+Tudo o que voce precisa fazer e colocar fotos dentro da pasta  fotos/
+
+1) LINHA DO TEMPO (mes a mes)
+   - Salve a foto com o nome do ANO-MES.jpg
+   - Exemplos:
+        fotos/2024-06.jpg   -> junho de 2024
+        fotos/2024-07.jpg   -> julho de 2024
+        fotos/2025-01.jpg   -> janeiro de 2025
+   - Assim que o arquivo estiver na pasta com esse nome, ele aparece
+     sozinho no mes certo. Nao precisa mexer em codigo.
+   - O mes de maio/2024 ja vem preenchido com a foto de voces.
+
+2) FOTO DA BELL COM A CAMISA DO GALO
+   - Salve a foto como:  fotos/galo.jpg
+   - Ela aparece no capitulo "Galo x Cruzeiro".
+
+3) ABRIR O SITE
+   - Abra o arquivo index.html no navegador (toque duas vezes / abrir com).
+   - Mantenha sempre o index.html e a pasta fotos JUNTOS, na mesma pasta.
+
+4) (OPCIONAL) PUBLICAR PRA MANDAR O LINK PRA ELA
+   - Da pra subir essa pasta no GitHub Pages ou Netlify e mandar o link.
+
+DICA: fotos "em pe" (retrato) ficam mais bonitas na linha do tempo.
+
+Com carinho 🤍
