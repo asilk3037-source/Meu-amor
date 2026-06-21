@@ -13,6 +13,16 @@ Tudo o que voce precisa fazer e colocar fotos dentro da pasta  fotos/
      sozinho no mes certo. Nao precisa mexer em codigo.
    - O mes de maio/2024 ja vem preenchido com a foto de voces.
 
+   TEM MAIS DE UMA FOTO NO MESMO MES? Sem problema — basta numerar:
+        fotos/2024-09.jpg     (1a foto de setembro/2024)
+        fotos/2024-09-2.jpg   (2a foto)
+        fotos/2024-09-3.jpg   (3a foto)
+        ... e assim por diante.
+   - O site detecta automaticamente todas as fotos numeradas daquele
+     mes e monta uma galeria: toque no lado direito da foto pra avancar,
+     no lado esquerdo pra voltar. Um contador (ex: "2/5") aparece no
+     canto pra mostrar quantas fotos tem naquele mes.
+
 2) FOTO DA BELL COM A CAMISA DO GALO
    - Salve a foto como:  fotos/galo.jpg
    - Ela aparece no capitulo "Galo x Cruzeiro".
