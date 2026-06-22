@@ -382,6 +382,29 @@ img{display:block;max-width:100%}
 .letter-card__body p.letter-card__sign{font-family:'Caveat',cursive;
   font-size:clamp(28px,7vw,34px);color:#6b4420;margin-top:8px;line-height:1}
 
+/* ---------- HEART EASTER EGG ---------- */
+.egg{cursor:pointer;display:inline-block}
+.egg.bump{animation:eggBump .35s ease}
+@keyframes eggBump{0%{transform:scale(1)}40%{transform:scale(1.4)}100%{transform:scale(1)}}
+
+.confetti-heart{position:fixed;top:-40px;z-index:120;pointer-events:none;
+  animation-name:confettiFall;animation-timing-function:linear;animation-fill-mode:forwards}
+@keyframes confettiFall{
+  0%{transform:translateY(0) rotate(0deg);opacity:1}
+  100%{transform:translateY(110vh) rotate(360deg);opacity:.85}
+}
+
+.egg-toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,20px);
+  z-index:130;max-width:min(360px,86vw);
+  background:linear-gradient(150deg,#efdfb2,#d9bd84 45%,#c4a06a 100%);
+  color:#4a3018;font-family:'Fraunces',serif;font-style:italic;
+  font-size:15px;line-height:1.5;text-align:center;
+  padding:16px 20px;border-radius:12px;
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+  opacity:0;pointer-events:none;
+  transition:opacity .4s ease,transform .4s ease}
+.egg-toast.show{opacity:1;transform:translate(-50%,0)}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(26px);
   transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -412,7 +435,7 @@ img{display:block;max-width:100%}
     <div class="hero__eyebrow mono">Belo Horizonte · desde 01 · 05 · 2024</div>
     <h1 class="hero__title">Bell <em>&amp;</em> Line</h1>
     <p class="hero__sub">A história que a cidade escreveu pra nós duas.</p>
-    <p class="hero__note">pra minha neném 🤍</p>
+    <p class="hero__note">pra minha neném <span class="egg" id="heartEgg">🤍</span></p>
   </div>
   <div class="scrollcue mono">DESCE COMIGO<span>⌄</span></div>
 </header>
@@ -1043,6 +1066,51 @@ cells.forEach(async dt=>{
   closeBtn.addEventListener('click',close);
   bg.addEventListener('click',close);
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+})();
+
+/* heart easter egg */
+(function(){
+  const egg=document.getElementById('heartEgg');
+  if(!egg) return;
+  const THRESHOLD=5;
+  let count=0;
+  function spawnConfetti(){
+    const hearts=['🤍','❤','💛'];
+    for(let i=0;i<28;i++){
+      const el=document.createElement('span');
+      el.className='confetti-heart';
+      el.textContent=hearts[Math.floor(Math.random()*hearts.length)];
+      el.style.left=(Math.random()*100)+'vw';
+      el.style.fontSize=(14+Math.random()*14)+'px';
+      el.style.animationDuration=(2.6+Math.random()*1.8)+'s';
+      el.style.animationDelay=(Math.random()*0.6)+'s';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),5200);
+    }
+  }
+  function showToast(){
+    let toast=document.getElementById('eggToast');
+    if(!toast){
+      toast=document.createElement('div');
+      toast.id='eggToast';
+      toast.className='egg-toast';
+      toast.textContent='Você me pegou. 🤍 Eu penso em você até nos detalhes mais bobos desse site.';
+      document.body.appendChild(toast);
+    }
+    requestAnimationFrame(()=>toast.classList.add('show'));
+    clearTimeout(toast._t);
+    toast._t=setTimeout(()=>toast.classList.remove('show'),4500);
+  }
+  egg.addEventListener('click',()=>{
+    count++;
+    egg.classList.remove('bump');
+    requestAnimationFrame(()=>egg.classList.add('bump'));
+    if(count>=THRESHOLD){
+      count=0;
+      spawnConfetti();
+      showToast();
+    }
+  });
 })();
 </script>
 </body>
