@@ -428,17 +428,6 @@ img{display:block;max-width:100%}
 .starmap__cap{font-family:'Caveat',cursive;font-size:clamp(20px,4.4vw,24px);
   color:var(--glow-2);margin-top:18px}
 
-/* ---------- NOSSO DICIONÁRIO ---------- */
-.dict{max-width:680px;margin:0 auto;padding:clamp(60px,11vh,100px) 24px 20px}
-.dict__k{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
-  text-transform:uppercase;color:var(--glow-2);margin-bottom:14px;text-align:center}
-.dict__sub{text-align:center;color:var(--taupe);margin-top:10px;margin-bottom:36px;font-size:16px}
-.dict__list{display:flex;flex-direction:column;gap:22px}
-.dict__item{border-left:2px solid var(--glow);padding-left:18px}
-.dict__term{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:19px;
-  color:var(--glow-2);margin-bottom:4px}
-.dict__def{color:var(--cream);opacity:.9;font-size:15.5px;line-height:1.6}
-
 /* ---------- TÔ COM SAUDADE ---------- */
 .saudade{max-width:600px;margin:0 auto;padding:clamp(60px,11vh,100px) 24px 20px;text-align:center}
 .saudade__k{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
@@ -759,35 +748,6 @@ img{display:block;max-width:100%}
     </div>
   </div>
   <audio id="audioSina" src="musica/sina.mp3" preload="none"></audio>
-</section>
-
-<!-- NOSSO DICIONÁRIO -->
-<section class="dict reveal">
-  <div class="dict__k">glossário oficial</div>
-  <h2>O nosso <em>dicionário</em></h2>
-  <p class="dict__sub">Palavras que só fazem sentido pra gente.</p>
-  <div class="dict__list">
-    <div class="dict__item">
-      <p class="dict__term">Bell</p>
-      <p class="dict__def">Como o mundo te chama de apelido. Curto, mas carrega tudo que você é.</p>
-    </div>
-    <div class="dict__item">
-      <p class="dict__term">Line</p>
-      <p class="dict__def">O nome que você me deu, e que eu uso pra assinar cada cartinha daqui pra frente.</p>
-    </div>
-    <div class="dict__item">
-      <p class="dict__term">Neném</p>
-      <p class="dict__def">Não tem explicação lógica. É só o jeito que sai quando eu falo com você.</p>
-    </div>
-    <div class="dict__item">
-      <p class="dict__term">Sapucaí</p>
-      <p class="dict__def">Não é o desfile, é qualquer point depois de qualquer rolê. Virou lugar oficial.</p>
-    </div>
-    <div class="dict__item">
-      <p class="dict__term">[em construção]</p>
-      <p class="dict__def">Esse espaço é seu: me conta nossas outras palavras e eu coloco aqui.</p>
-    </div>
-  </div>
 </section>
 
 <!-- PEQUENAS COISAS -->
@@ -1250,7 +1210,7 @@ cells.forEach(async dt=>{
   if(!box) return;
   const QUESTIONS=[
     {q:'Em que cidade a gente se cruzou pela primeira vez?',opts:['Contagem','Belo Horizonte','Rio de Janeiro'],a:1},
-    {q:'Em que dia foi isso?',opts:['19 de maio de 2024','9 de maio de 2024','1º de maio de 2024'],a:2},
+    {q:'Em que dia a gente começou a se falar?',opts:['9 de maio de 2024','1º de maio de 2024','10 de junho de 2024'],a:1},
     {q:'Depois de qualquer rolê, pra onde a gente sempre acaba indo?',opts:['Sapucaí','Centro','Pedro Leopoldo'],a:0},
     {q:'Qual é a nossa música?',opts:['I Wanna Be Yours','Sina','Girassóis'],a:1},
     {q:'Em que data ela disse sim?',opts:['10 de junho de 2024','19 de maio de 2024','5 de novembro de 2025'],a:2}
