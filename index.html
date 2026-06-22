@@ -313,6 +313,71 @@ img{display:block;max-width:100%}
 .footer{text-align:center;padding:40px 24px 60px;color:var(--taupe);
   font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em}
 
+/* ---------- LETTER FAB + ENVELOPE MODAL ---------- */
+.letter-fab{position:fixed;right:18px;bottom:18px;z-index:70;width:52px;height:52px;
+  border-radius:50%;border:1px solid rgba(242,169,78,.35);
+  background:linear-gradient(135deg,var(--ink-3),var(--ink-2));
+  color:var(--glow-2);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.45);
+  transition:transform .25s ease,box-shadow .25s ease}
+.letter-fab:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.5)}
+
+.letter-modal{position:fixed;inset:0;z-index:95;display:none;
+  align-items:center;justify-content:center;padding:24px}
+.letter-modal.on{display:flex}
+.letter-modal__bg{position:absolute;inset:0;background:rgba(10,8,7,0);
+  transition:background .35s ease}
+.letter-modal.show .letter-modal__bg{background:rgba(10,8,7,.94)}
+.letter-modal__stage{position:relative;width:min(360px,86vw);perspective:1000px}
+
+.envelope{position:relative;width:100%;height:0;padding-top:64%;
+  opacity:0;transform:scale(.55);
+  transition:opacity .35s ease,transform .4s cubic-bezier(.2,.7,.2,1)}
+.letter-modal.show .envelope{opacity:1;transform:scale(1)}
+.letter-modal.open .envelope{opacity:0;transform:scale(.7) translateY(10px)}
+
+.envelope__pocket{position:absolute;inset:0;border-radius:6px;overflow:hidden;
+  background:linear-gradient(135deg,#d8c08c,#b8965f);
+  box-shadow:0 22px 50px rgba(0,0,0,.5)}
+.envelope__pocket::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,0,0,.18),transparent 55%)}
+.envelope__pocket::after{content:'';position:absolute;left:0;right:0;bottom:0;height:72%;
+  background:linear-gradient(160deg,transparent 49%,rgba(0,0,0,.12) 50%),
+              linear-gradient(20deg,transparent 49%,rgba(0,0,0,.12) 50%)}
+
+.envelope__paper{position:absolute;left:10%;right:10%;top:14%;height:0;
+  background:linear-gradient(160deg,#f3ebdf,#e3d6ba);
+  border-radius:3px;box-shadow:0 4px 14px rgba(0,0,0,.25);
+  transition:height .4s ease,top .4s ease,opacity .3s ease;opacity:0}
+.letter-modal.flap-open .envelope__paper{height:46%;top:-18%;opacity:1}
+
+.envelope__flap{position:absolute;left:0;right:0;top:0;height:60%;
+  background:linear-gradient(135deg,#e3c98f,#c9a96e);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;transform:rotateX(0deg);
+  transition:transform .55s cubic-bezier(.3,.6,.2,1);
+  box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.letter-modal.flap-open .envelope__flap{transform:rotateX(-178deg)}
+
+.letter-card{position:absolute;inset:0;border-radius:10px;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(255,255,255,.18),transparent 55%),
+    repeating-linear-gradient(0deg,rgba(110,80,40,.05) 0px,rgba(110,80,40,.05) 2px,transparent 2px,transparent 5px),
+    linear-gradient(150deg,#efdfb2,#d9bd84 45%,#c4a06a 100%);
+  box-shadow:0 0 0 1px rgba(110,78,38,.3) inset,0 30px 70px rgba(0,0,0,.55);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:46px 28px;text-align:center;
+  opacity:0;transform:scale(.82) translateY(14px);pointer-events:none;
+  transition:opacity .45s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+.letter-modal.open .letter-card{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
+
+.letter-card__close{position:absolute;top:12px;right:14px;width:30px;height:30px;
+  border-radius:50%;border:none;background:rgba(60,40,20,.12);color:#5a3f22;
+  font-size:18px;line-height:1;cursor:pointer}
+.letter-card__seal{font-size:30px;color:#8a5a2c;margin-bottom:14px}
+.letter-card__text{font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+  font-size:clamp(22px,5vw,28px);color:#5a3f22}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(26px);
   transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -638,6 +703,29 @@ img{display:block;max-width:100%}
 
 <footer class="footer">feito com amor em Belo Horizonte · Line → Bell</footer>
 
+<button class="letter-fab" id="letterFab" type="button" aria-label="Abrir carta">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.4" y="5.2" width="19.2" height="13.6" rx="2"></rect>
+    <path d="M3 6.6 12 13.4 21 6.6"></path>
+  </svg>
+</button>
+
+<div class="letter-modal" id="letterModal">
+  <div class="letter-modal__bg" id="letterBg"></div>
+  <div class="letter-modal__stage">
+    <div class="envelope" id="envelope">
+      <div class="envelope__pocket"></div>
+      <div class="envelope__paper"></div>
+      <div class="envelope__flap"></div>
+    </div>
+    <div class="letter-card" id="letterCard">
+      <button class="letter-card__close" id="letterClose" type="button" aria-label="Fechar">×</button>
+      <div class="letter-card__seal">✉</div>
+      <p class="letter-card__text">em breve</p>
+    </div>
+  </div>
+</div>
+
 <script>
 /* reveal on scroll */
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.16});
@@ -803,6 +891,31 @@ cells.forEach(async dt=>{
   const photos=key==='2024-05'?[EMBED_MAIO,...found]:(await probe(`fotos/${key}.jpg`)?[`fotos/${key}.jpg`,...found]:found);
   buildGallery(cell,photos,lab,key);
 });
+
+/* letter fab: envelope-opening modal */
+(function(){
+  const fab=document.getElementById('letterFab');
+  const modal=document.getElementById('letterModal');
+  const closeBtn=document.getElementById('letterClose');
+  const bg=document.getElementById('letterBg');
+  if(!fab||!modal) return;
+  let t1,t2;
+  function open(){
+    modal.classList.add('on');
+    requestAnimationFrame(()=>modal.classList.add('show'));
+    t1=setTimeout(()=>modal.classList.add('flap-open'),420);
+    t2=setTimeout(()=>modal.classList.add('open'),900);
+  }
+  function close(){
+    clearTimeout(t1);clearTimeout(t2);
+    modal.classList.remove('show','flap-open','open');
+    setTimeout(()=>modal.classList.remove('on'),350);
+  }
+  fab.addEventListener('click',open);
+  closeBtn.addEventListener('click',close);
+  bg.addEventListener('click',close);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+})();
 </script>
 </body>
 </html>
