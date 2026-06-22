@@ -260,6 +260,31 @@ img{display:block;max-width:100%}
   width:22px;flex-shrink:0}
 .track__txt b{font-family:'Fraunces',serif;font-weight:500;font-size:18px;display:block}
 .track__txt span{color:var(--taupe);font-size:14px}
+.track__play{width:34px;height:34px;border-radius:50%;border:1px solid var(--glow);
+  background:rgba(242,169,78,.12);color:var(--glow-2);font-size:13px;cursor:pointer;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  transition:background .2s ease}
+.track__play:hover{background:rgba(242,169,78,.22)}
+.track__play.missing{opacity:.4;cursor:not-allowed}
+.track__bars{display:flex;align-items:flex-end;gap:3px;height:16px;margin-left:auto;opacity:0}
+.track__bars span{width:3px;background:var(--glow);border-radius:2px;height:4px;display:block}
+.track.playing .track__bars{opacity:1}
+.track.playing .track__bars span{animation:eq .9s ease-in-out infinite}
+.track.playing .track__bars span:nth-child(2){animation-delay:.2s}
+.track.playing .track__bars span:nth-child(3){animation-delay:.4s}
+@keyframes eq{0%,100%{height:4px}50%{height:16px}}
+
+/* ---------- PEQUENAS COISAS ---------- */
+.little{max-width:680px;margin:0 auto;padding:clamp(60px,11vh,100px) 24px 20px}
+.little__k{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--glow-2);text-align:center;margin-bottom:18px}
+.little h2{font-family:'Fraunces',serif;font-weight:500;text-align:center;
+  font-size:clamp(30px,7vw,52px);line-height:1.04;letter-spacing:-.02em;margin-bottom:36px}
+.little h2 em{font-style:italic;color:var(--glow)}
+.little__list{display:flex;flex-direction:column;gap:20px}
+.little__item{font-family:'Caveat',cursive;font-weight:500;font-size:clamp(22px,4.4vw,28px);
+  line-height:1.35;color:var(--cream);padding-left:30px;position:relative}
+.little__item::before{content:'❦';position:absolute;left:0;top:2px;color:var(--glow);font-size:18px}
 
 /* ---------- FINALE ---------- */
 .finale{position:relative;padding:clamp(90px,18vh,170px) 24px;text-align:center;
@@ -520,9 +545,10 @@ img{display:block;max-width:100%}
   <div class="playlist__k">trilha sonora</div>
   <h2>As músicas que marcam <em>a gente</em></h2>
   <div class="tracks">
-    <div class="track">
-      <span class="track__n">01</span>
+    <div class="track" id="trackSina">
+      <button class="track__play" id="playSina" type="button" aria-label="Tocar Sina">▶</button>
       <div class="track__txt"><b>Sina</b><span>Ivyson</span></div>
+      <div class="track__bars" aria-hidden="true"><span></span><span></span><span></span></div>
     </div>
     <div class="track">
       <span class="track__n">02</span>
@@ -532,6 +558,21 @@ img{display:block;max-width:100%}
       <span class="track__n">03</span>
       <div class="track__txt"><b>I Wanna Be Yours</b><span>Arctic Monkeys</span></div>
     </div>
+  </div>
+  <audio id="audioSina" src="musica/sina.mp3" preload="none"></audio>
+</section>
+
+<!-- PEQUENAS COISAS -->
+<section class="little reveal">
+  <div class="little__k">pequenas coisas</div>
+  <h2>Coisas que eu amo em <em>você</em></h2>
+  <div class="little__list">
+    <p class="little__item">O jeito que você ri às vezes igual maluca, dá aquela gargalhada e joga a cabeça pra trás.</p>
+    <p class="little__item">Quando você cozinha e sai inventando umas coisas aí, e qualquer coisinha já vira motivo pra mudar a receita toda.</p>
+    <p class="little__item">O jeito que você implica comigo de brincadeira só pra ver minha cara.</p>
+    <p class="little__item">Como você dorme enroladinha, tomando conta da cama inteira.</p>
+    <p class="little__item">A cara de concentração que você faz pra decidir o que vai comer.</p>
+    <p class="little__item">O jeitinho que você me chama quando quer atenção.</p>
   </div>
 </section>
 
@@ -589,6 +630,26 @@ document.querySelectorAll('.paths').forEach(el=>pio.observe(el));
   }
   update();
   setInterval(update,3600000);
+})();
+
+/* player da Sina */
+(function(){
+  const btn=document.getElementById('playSina');
+  const audio=document.getElementById('audioSina');
+  const track=document.getElementById('trackSina');
+  if(!btn||!audio||!track) return;
+  fetch(audio.src,{method:'HEAD'}).then(r=>{
+    if(!r.ok){btn.classList.add('missing');btn.title='Coloque o arquivo musica/sina.mp3 pra ativar';}
+  }).catch(()=>{btn.classList.add('missing')});
+  btn.addEventListener('click',()=>{
+    if(btn.classList.contains('missing')) return;
+    if(audio.paused){
+      audio.play();btn.textContent='❚❚';track.classList.add('playing');
+    }else{
+      audio.pause();btn.textContent='▶';track.classList.remove('playing');
+    }
+  });
+  audio.addEventListener('ended',()=>{btn.textContent='▶';track.classList.remove('playing')});
 })();
 
 /* PEDIDO gallery + lightbox */

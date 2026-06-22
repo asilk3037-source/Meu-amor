@@ -27,11 +27,16 @@ Tudo o que voce precisa fazer e colocar fotos dentro da pasta  fotos/
    - Salve a foto como:  fotos/galo.jpg
    - Ela aparece no capitulo "Galo x Cruzeiro".
 
-3) ABRIR O SITE
-   - Abra o arquivo index.html no navegador (toque duas vezes / abrir com).
-   - Mantenha sempre o index.html e a pasta fotos JUNTOS, na mesma pasta.
+3) TOCAR A MUSICA "SINA" NO SITE
+   - Salve o arquivo de audio da musica como:  musica/sina.mp3
+   - O botao de play que ja existe na secao "trilha sonora" do site
+     vai funcionar sozinho assim que esse arquivo estiver na pasta.
 
-4) (OPCIONAL) PUBLICAR PRA MANDAR O LINK PRA ELA
+4) ABRIR O SITE
+   - Abra o arquivo index.html no navegador (toque duas vezes / abrir com).
+   - Mantenha sempre o index.html e as pastas fotos e musica JUNTOS, na mesma pasta.
+
+5) (OPCIONAL) PUBLICAR PRA MANDAR O LINK PRA ELA
    - Da pra subir essa pasta no GitHub Pages ou Netlify e mandar o link.
 
 DICA: fotos "em pe" (retrato) ficam mais bonitas na linha do tempo.
