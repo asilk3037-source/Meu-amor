@@ -216,6 +216,51 @@ img{display:block;max-width:100%}
 .lb__nav.prev{left:0}
 .lb__nav.next{right:0}
 
+/* ---------- EM NÚMEROS (contador) ---------- */
+.stats{max-width:760px;margin:0 auto;padding:clamp(60px,11vh,100px) 24px 20px;text-align:center}
+.stats__k{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--glow-2);margin-bottom:18px}
+.stats h2{font-family:'Fraunces',serif;font-weight:500;
+  font-size:clamp(30px,7vw,52px);line-height:1.04;letter-spacing:-.02em;margin-bottom:10px}
+.stats h2 em{font-style:italic;color:var(--glow)}
+.stats__num{font-family:'Fraunces',serif;font-weight:500;font-style:italic;
+  font-size:clamp(64px,18vw,128px);line-height:1;color:var(--glow);margin:18px 0 6px}
+.stats__cap{color:var(--taupe);font-size:16px}
+
+/* ---------- MAPA DE LUGARES ---------- */
+.places{max-width:880px;margin:0 auto;padding:clamp(60px,11vh,100px) 24px 20px}
+.places__k{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--glow-2);text-align:center;margin-bottom:18px}
+.places h2{font-family:'Fraunces',serif;font-weight:500;text-align:center;
+  font-size:clamp(30px,7vw,52px);line-height:1.04;letter-spacing:-.02em;margin-bottom:14px}
+.places h2 em{font-style:italic;color:var(--glow)}
+.places__sub{text-align:center;color:var(--taupe);max-width:54ch;margin:0 auto 40px;font-size:17px}
+.places__group{margin-bottom:28px}
+.places__group h3{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--cream);opacity:.85;margin-bottom:12px;
+  display:flex;align-items:center;gap:8px}
+.places__group h3::before{content:'';width:7px;height:7px;border-radius:50%;
+  background:var(--glow);display:inline-block;box-shadow:0 0 0 4px rgba(242,169,78,.18)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:'Space Mono',monospace;font-size:13px;color:var(--cream);
+  background:var(--ink-2);border:1px solid var(--line);border-radius:999px;
+  padding:7px 14px}
+
+/* ---------- TRILHA SONORA ---------- */
+.playlist{max-width:640px;margin:0 auto;padding:clamp(60px,11vh,100px) 24px 20px}
+.playlist__k{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--glow-2);text-align:center;margin-bottom:18px}
+.playlist h2{font-family:'Fraunces',serif;font-weight:500;text-align:center;
+  font-size:clamp(30px,7vw,52px);line-height:1.04;letter-spacing:-.02em;margin-bottom:36px}
+.playlist h2 em{font-style:italic;color:var(--glow)}
+.tracks{display:flex;flex-direction:column;gap:14px}
+.track{display:flex;align-items:center;gap:16px;padding:16px 18px;
+  background:var(--ink-2);border:1px solid var(--line);border-radius:16px}
+.track__n{font-family:'Space Mono',monospace;font-size:13px;color:var(--glow-2);
+  width:22px;flex-shrink:0}
+.track__txt b{font-family:'Fraunces',serif;font-weight:500;font-size:18px;display:block}
+.track__txt span{color:var(--taupe);font-size:14px}
+
 /* ---------- FINALE ---------- */
 .finale{position:relative;padding:clamp(90px,18vh,170px) 24px;text-align:center;
   background:radial-gradient(120% 90% at 50% 0%, rgba(242,169,78,.10), transparent 60%)}
@@ -426,6 +471,70 @@ img{display:block;max-width:100%}
   <div class="lb__nav next" id="lbNext"></div>
 </div>
 
+<!-- EM NÚMEROS -->
+<section class="stats reveal">
+  <div class="stats__k">10 · 06 · 2024 · desde o primeiro dia</div>
+  <h2>Contando cada <em>dia</em> desde então</h2>
+  <div class="stats__num" id="daysCounter">0</div>
+  <div class="stats__cap" id="daysYMD">dias juntos</div>
+</section>
+
+<!-- MAPA DE LUGARES -->
+<section class="places reveal">
+  <div class="places__k">nosso mapa</div>
+  <h2>Os lugares por onde a gente <em>passou</em></h2>
+  <p class="places__sub">Cada cidade dessas tem um pedacinho da nossa história — de Minas até o litoral.</p>
+
+  <div class="places__group">
+    <h3>Minas Gerais</h3>
+    <div class="chips">
+      <span class="chip">Belo Horizonte</span>
+      <span class="chip">Contagem</span>
+      <span class="chip">Santa Luzia</span>
+      <span class="chip">Pedro Leopoldo</span>
+      <span class="chip">Matozinhos</span>
+      <span class="chip">Lavras Novas</span>
+      <span class="chip">São Tomé das Letras</span>
+    </div>
+  </div>
+
+  <div class="places__group">
+    <h3>De carro até o litoral</h3>
+    <div class="chips">
+      <span class="chip">De Belo Horizonte a Guarapari, parando em cada cidade do caminho</span>
+    </div>
+  </div>
+
+  <div class="places__group">
+    <h3>Rio de Janeiro</h3>
+    <div class="chips">
+      <span class="chip">Barra da Tijuca</span>
+      <span class="chip">Centro — Museu do Amanhã</span>
+      <span class="chip">Queimados</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRILHA SONORA -->
+<section class="playlist reveal">
+  <div class="playlist__k">trilha sonora</div>
+  <h2>As músicas que marcam <em>a gente</em></h2>
+  <div class="tracks">
+    <div class="track">
+      <span class="track__n">01</span>
+      <div class="track__txt"><b>Sina</b><span>Ivyson</span></div>
+    </div>
+    <div class="track">
+      <span class="track__n">02</span>
+      <div class="track__txt"><b>Girassóis</b><span>Ivyson</span></div>
+    </div>
+    <div class="track">
+      <span class="track__n">03</span>
+      <div class="track__txt"><b>I Wanna Be Yours</b><span>Arctic Monkeys</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- FINALE -->
 <section class="finale reveal">
   <div class="finale__k">e hoje, estamos aqui</div>
@@ -452,6 +561,35 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 /* paths draw-in */
 const pio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.4});
 document.querySelectorAll('.paths').forEach(el=>pio.observe(el));
+
+/* contador de dias juntos */
+(function(){
+  const start=new Date(2024,5,10);
+  const counter=document.getElementById('daysCounter');
+  const cap=document.getElementById('daysYMD');
+  if(!counter) return;
+  function unit(n,s,p){return n+' '+(n===1?s:p)}
+  function update(){
+    const now=new Date();
+    const days=Math.floor((now-start)/86400000);
+    let y=now.getFullYear()-start.getFullYear();
+    let m=now.getMonth()-start.getMonth();
+    let d=now.getDate()-start.getDate();
+    if(d<0){m--;d+=new Date(now.getFullYear(),now.getMonth(),0).getDate()}
+    if(m<0){y--;m+=12}
+    const parts=[];
+    if(y>0) parts.push(unit(y,'ano','anos'));
+    if(m>0) parts.push(unit(m,'mês','meses'));
+    parts.push(unit(d,'dia','dias'));
+    const txt=parts.length>1
+      ?parts.slice(0,-1).join(', ')+' e '+parts[parts.length-1]
+      :parts[0];
+    counter.textContent=days.toLocaleString('pt-BR');
+    cap.textContent=txt+' juntos';
+  }
+  update();
+  setInterval(update,3600000);
+})();
 
 /* PEDIDO gallery + lightbox */
 (function(){
