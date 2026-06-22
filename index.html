@@ -359,24 +359,28 @@ img{display:block;max-width:100%}
   box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .letter-modal.flap-open .envelope__flap{transform:rotateX(-178deg)}
 
-.letter-card{position:absolute;inset:0;border-radius:10px;
+.letter-card{position:fixed;top:50%;left:50%;width:min(560px,92vw);
+  max-height:min(80vh,660px);display:flex;flex-direction:column;border-radius:14px;
   background:
     radial-gradient(circle at 18% 12%,rgba(255,255,255,.18),transparent 55%),
     repeating-linear-gradient(0deg,rgba(110,80,40,.05) 0px,rgba(110,80,40,.05) 2px,transparent 2px,transparent 5px),
     linear-gradient(150deg,#efdfb2,#d9bd84 45%,#c4a06a 100%);
   box-shadow:0 0 0 1px rgba(110,78,38,.3) inset,0 30px 70px rgba(0,0,0,.55);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:46px 28px;text-align:center;
-  opacity:0;transform:scale(.82) translateY(14px);pointer-events:none;
+  overflow:hidden;
+  opacity:0;transform:translate(-50%,-50%) scale(.82);pointer-events:none;
   transition:opacity .45s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
-.letter-modal.open .letter-card{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
+.letter-modal.open .letter-card{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
 
-.letter-card__close{position:absolute;top:12px;right:14px;width:30px;height:30px;
-  border-radius:50%;border:none;background:rgba(60,40,20,.12);color:#5a3f22;
+.letter-card__close{position:absolute;top:12px;right:14px;z-index:2;width:30px;height:30px;
+  border-radius:50%;border:none;background:rgba(60,40,20,.14);color:#5a3f22;
   font-size:18px;line-height:1;cursor:pointer}
-.letter-card__seal{font-size:30px;color:#8a5a2c;margin-bottom:14px}
-.letter-card__text{font-family:'Fraunces',serif;font-style:italic;font-weight:500;
-  font-size:clamp(22px,5vw,28px);color:#5a3f22}
+.letter-card__seal{flex-shrink:0;text-align:center;font-size:26px;color:#8a5a2c;
+  padding:36px 0 6px}
+.letter-card__body{flex:1;overflow-y:auto;padding:6px 30px 36px;text-align:left}
+.letter-card__body p{font-family:'Fraunces',serif;font-size:clamp(15px,3.6vw,16.5px);
+  line-height:1.62;color:#4a3018;margin-bottom:13px}
+.letter-card__body p.letter-card__sign{font-family:'Caveat',cursive;
+  font-size:clamp(28px,7vw,34px);color:#6b4420;margin-top:8px;line-height:1}
 
 /* reveal */
 .reveal{opacity:0;transform:translateY(26px);
@@ -721,7 +725,131 @@ img{display:block;max-width:100%}
     <div class="letter-card" id="letterCard">
       <button class="letter-card__close" id="letterClose" type="button" aria-label="Fechar">×</button>
       <div class="letter-card__seal">✉</div>
-      <p class="letter-card__text">em breve</p>
+      <div class="letter-card__body">
+        <p>Para minha Bell,</p>
+        <p>Se você está lendo isso, provavelmente já percebeu que este site existe por sua causa.</p>
+        <p>Eu poderia ter te dado flores. Poderia ter escrito uma mensagem simples. Poderia ter escolhido qualquer outra forma de demonstrar o que sinto. Mas eu queria criar algo que permanecesse, algo que pudesse ser visitado sempre que você precisasse lembrar de uma coisa: eu te amo.</p>
+        <p>Talvez a gente não esteja vivendo a nossa melhor fase agora. Talvez existam dias em que o silêncio pesa mais do que deveria. Dias em que as palavras saem tortas, em que os problemas parecem maiores do que realmente são e em que a vida decide nos testar além da conta.</p>
+        <p>Existem momentos em que tudo fica obscuro.</p>
+        <p>Momentos em que parece que estamos caminhando em uma estrada sem enxergar o fim dela.</p>
+        <p>Mas mesmo nesses momentos, principalmente nesses momentos, existe uma verdade que continua intacta dentro de mim:</p>
+        <p>Eu continuo te amando.</p>
+        <p>Eu continuo te amando da mesma forma que amei na primeira vez que percebi que você tinha se tornado diferente de todas as outras pessoas.</p>
+        <p>Continuo te amando quando você sorri.</p>
+        <p>Continuo te amando quando você fica brava.</p>
+        <p>Continuo te amando quando concordamos em tudo.</p>
+        <p>E continuo te amando quando não concordamos em nada.</p>
+        <p>Porque o amor nunca foi apenas sobre os dias fáceis.</p>
+        <p>Se fosse, qualquer pessoa conseguiria amar.</p>
+        <p>O amor verdadeiro aparece justamente quando as tempestades chegam.</p>
+        <p>Quando existe dúvida.</p>
+        <p>Quando existe medo.</p>
+        <p>Quando existe a escolha diária de permanecer.</p>
+        <p>E eu escolho você.</p>
+        <p>Todos os dias.</p>
+        <p>Mesmo nos dias difíceis.</p>
+        <p>Mesmo quando parece complicado.</p>
+        <p>Mesmo quando a vida tenta nos convencer de que seria mais fácil desistir.</p>
+        <p>Porque tudo que vivemos juntas ainda parece um sonho para mim.</p>
+        <p>Às vezes eu paro para pensar em quantas coincidências precisaram acontecer para que nossos caminhos se encontrassem.</p>
+        <p>Entre bilhões de pessoas.</p>
+        <p>Entre milhares de ruas.</p>
+        <p>Entre milhões de possibilidades.</p>
+        <p>Foi você.</p>
+        <p>E continua sendo você.</p>
+        <p>Você se tornou parte dos meus dias de uma forma tão natural que eu já não consigo imaginar um futuro onde você não esteja.</p>
+        <p>Você está nas minhas melhores lembranças.</p>
+        <p>Nos meus planos.</p>
+        <p>Nas minhas risadas.</p>
+        <p>Nos meus pensamentos mais aleatórios.</p>
+        <p>Nas minhas preocupações.</p>
+        <p>Nos meus sonhos.</p>
+        <p>Você está em tudo.</p>
+        <p>E eu sei que a vida não é feita apenas de momentos bonitos.</p>
+        <p>Nós já aprendemos isso.</p>
+        <p>Nós passamos por todas as estações juntas.</p>
+        <p>Vivemos a primavera.</p>
+        <p>Aquela fase em que tudo floresce.</p>
+        <p>Quando tudo parecia novo.</p>
+        <p>Quando cada conversa era uma descoberta.</p>
+        <p>Quando cada abraço parecia durar pouco demais.</p>
+        <p>A primavera foi o começo.</p>
+        <p>Foi o tempo das flores.</p>
+        <p>Das borboletas.</p>
+        <p>Da expectativa.</p>
+        <p>Da sensação maravilhosa de estar construindo algo que poderia durar para sempre.</p>
+        <p>Depois veio o verão.</p>
+        <p>O verão intenso.</p>
+        <p>Quente.</p>
+        <p>Vivo.</p>
+        <p>Cheio de risadas, planos, sonhos e momentos inesquecíveis.</p>
+        <p>O verão foi quando o amor parecia maior do que o mundo inteiro.</p>
+        <p>Quando nada parecia impossível.</p>
+        <p>Quando bastava segurar sua mão para que tudo fizesse sentido.</p>
+        <p>Mas toda história passa pelo outono.</p>
+        <p>E nós também passamos.</p>
+        <p>O outono chega silenciosamente.</p>
+        <p>As flores começam a cair.</p>
+        <p>As folhas mudam de cor.</p>
+        <p>Algumas coisas ficam mais difíceis.</p>
+        <p>O céu parece mais cinza.</p>
+        <p>As preocupações aparecem.</p>
+        <p>Os desafios surgem.</p>
+        <p>E, às vezes, a gente olha ao redor e sente saudade da primavera que existia antes.</p>
+        <p>Mas o outono não existe para destruir.</p>
+        <p>Ele existe para ensinar.</p>
+        <p>Para mostrar o que permanece mesmo quando as flores caem.</p>
+        <p>E então chega o inverno.</p>
+        <p>O inverno das dúvidas.</p>
+        <p>Dos medos.</p>
+        <p>Das inseguranças.</p>
+        <p>O inverno em que tudo parece distante.</p>
+        <p>O inverno em que o frio tenta entrar pelas frestas e fazer morada.</p>
+        <p>O inverno em que a gente se pergunta se ainda consegue encontrar o calor de antes.</p>
+        <p>Mas existe uma coisa que o inverno nunca conseguiu fazer.</p>
+        <p>Ele nunca conseguiu impedir a chegada da primavera.</p>
+        <p>Porque ela sempre volta.</p>
+        <p>Sempre.</p>
+        <p>As flores sempre voltam a nascer.</p>
+        <p>As árvores sempre voltam a ficar coloridas.</p>
+        <p>A vida sempre encontra um jeito de florescer outra vez.</p>
+        <p>E eu acredito nisso.</p>
+        <p>Acredito na nossa primavera.</p>
+        <p>Acredito que existe beleza depois das dificuldades.</p>
+        <p>Acredito que existe luz depois da escuridão.</p>
+        <p>Acredito que existe reencontro depois da distância.</p>
+        <p>Porque quando eu olho para você, eu não vejo apenas quem você é hoje.</p>
+        <p>Eu vejo tudo o que já vivemos.</p>
+        <p>Tudo o que enfrentamos.</p>
+        <p>Tudo o que superamos.</p>
+        <p>E tudo o que ainda podemos construir.</p>
+        <p>Você é muito mais do que a pessoa que eu amo.</p>
+        <p>Você é meu porto seguro.</p>
+        <p>Meu lugar favorito.</p>
+        <p>Minha melhor companhia.</p>
+        <p>Meu lar.</p>
+        <p>E talvez eu não diga isso tantas vezes quanto deveria.</p>
+        <p>Talvez eu falhe.</p>
+        <p>Talvez eu erre.</p>
+        <p>Talvez eu não encontre sempre as palavras certas.</p>
+        <p>Mas existe algo que eu nunca quero que você esqueça:</p>
+        <p>Eu não quero que o nosso amor morra.</p>
+        <p>Eu não quero que as dificuldades sejam maiores do que aquilo que construímos.</p>
+        <p>Eu não quero que os momentos ruins apaguem todos os momentos extraordinários que tivemos.</p>
+        <p>Porque o que existe entre nós é precioso demais para ser esquecido.</p>
+        <p>Você é preciosa demais para ser esquecida.</p>
+        <p>Eu ainda acredito em nós.</p>
+        <p>Acredito na nossa história.</p>
+        <p>Acredito no nosso futuro.</p>
+        <p>Acredito que ainda existem muitas primaveras esperando por nós.</p>
+        <p>E enquanto eu puder escolher, enquanto meu coração continuar batendo e enquanto existir amor dentro de mim, vou continuar escolhendo você.</p>
+        <p>Hoje.</p>
+        <p>Amanhã.</p>
+        <p>E em todos os dias que vierem depois.</p>
+        <p>Porque, Isabel, de todas as coisas que aconteceram na minha vida, você continua sendo a mais bonita.</p>
+        <p>Com todo o amor que existe em mim,</p>
+        <p class="letter-card__sign">Sua Line ❤️</p>
+      </div>
     </div>
   </div>
 </div>
