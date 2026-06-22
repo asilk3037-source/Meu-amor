@@ -405,6 +405,77 @@ img{display:block;max-width:100%}
   transition:opacity .4s ease,transform .4s ease}
 .egg-toast.show{opacity:1;transform:translate(-50%,0)}
 
+/* ---------- MAPA DE ESTRELAS ---------- */
+.starmap{position:relative;max-width:880px;margin:40px auto 0;
+  padding:clamp(70px,12vh,110px) 24px 60px;
+  background:radial-gradient(ellipse at 50% 0%,rgba(242,169,78,.08),transparent 60%),var(--ink-3);
+  border-radius:24px;overflow:hidden;text-align:center}
+.starmap__sky{position:absolute;inset:0;z-index:0}
+.starmap__sky span{position:absolute;border-radius:50%;background:var(--cream);
+  animation:twinkle 3.4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.9}}
+.starmap__inner{position:relative;z-index:1}
+.starmap__k{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--glow-2);margin-bottom:14px}
+.starmap__sub{color:var(--taupe);max-width:50ch;margin:14px auto 30px;font-size:16px}
+.constellation{width:100%;max-width:280px;height:auto;display:block;margin:0 auto}
+.cl{fill:none;stroke:var(--glow);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:760;stroke-dashoffset:760;transition:stroke-dashoffset 2.4s ease}
+.constellation.in .cl{stroke-dashoffset:0}
+.cs{fill:var(--cream);opacity:0;transform-origin:center;transition:opacity .5s ease}
+.constellation.in .cs{opacity:1}
+.cs.main{fill:var(--glow);animation:pulse 2.4s ease-in-out infinite}
+.starmap__cap{font-family:'Caveat',cursive;font-size:clamp(20px,4.4vw,24px);
+  color:var(--glow-2);margin-top:18px}
+
+/* ---------- NOSSO DICIONÁRIO ---------- */
+.dict{max-width:680px;margin:0 auto;padding:clamp(60px,11vh,100px) 24px 20px}
+.dict__k{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--glow-2);margin-bottom:14px;text-align:center}
+.dict__sub{text-align:center;color:var(--taupe);margin-top:10px;margin-bottom:36px;font-size:16px}
+.dict__list{display:flex;flex-direction:column;gap:22px}
+.dict__item{border-left:2px solid var(--glow);padding-left:18px}
+.dict__term{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:19px;
+  color:var(--glow-2);margin-bottom:4px}
+.dict__def{color:var(--cream);opacity:.9;font-size:15.5px;line-height:1.6}
+
+/* ---------- TÔ COM SAUDADE ---------- */
+.saudade{max-width:600px;margin:0 auto;padding:clamp(60px,11vh,100px) 24px 20px;text-align:center}
+.saudade__k{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--glow-2);margin-bottom:14px}
+.saudade__btn{margin:22px auto 0;display:inline-flex;align-items:center;gap:10px;
+  font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink);background:linear-gradient(135deg,var(--glow-2),var(--glow));
+  border:none;border-radius:30px;padding:14px 28px;cursor:pointer;
+  box-shadow:0 14px 30px rgba(242,169,78,.25);transition:transform .25s ease}
+.saudade__btn:hover{transform:translateY(-2px)}
+.saudade__msg{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(18px,3.6vw,21px);
+  color:var(--cream);opacity:.95;margin-top:26px;min-height:3em;max-width:46ch;
+  margin-left:auto;margin-right:auto;transition:opacity .35s ease}
+.saudade__msg.swap{opacity:0}
+
+/* ---------- QUIZ ---------- */
+.quiz{max-width:620px;margin:0 auto;padding:clamp(60px,11vh,100px) 24px 20px;text-align:center}
+.quiz__k{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--glow-2);margin-bottom:14px}
+.quiz__sub{color:var(--taupe);margin-top:10px;font-size:16px}
+.quiz__box{margin-top:32px;background:var(--ink-3);border:1px solid var(--line);
+  border-radius:16px;padding:28px 22px}
+.quiz__q{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(19px,4vw,23px);margin-bottom:20px}
+.quiz__opts{display:flex;flex-direction:column;gap:10px}
+.quiz__opt{font-family:'Hanken Grotesk',sans-serif;font-size:15.5px;color:var(--cream);
+  background:transparent;border:1px solid var(--line);border-radius:10px;padding:12px 16px;
+  cursor:pointer;text-align:left;transition:border-color .2s ease,background .2s ease;width:100%}
+.quiz__opt:hover{border-color:var(--glow)}
+.quiz__opt.correct{border-color:var(--glow);background:rgba(242,169,78,.14)}
+.quiz__opt.wrong{border-color:var(--brick);background:rgba(196,73,47,.14)}
+.quiz__opt[disabled]{cursor:default}
+.quiz__feedback{min-height:1.4em;margin-top:16px;font-size:14px;color:var(--glow-2)}
+.quiz__progress{margin-top:6px;font-family:'Space Mono',monospace;font-size:12px;color:var(--taupe)}
+.quiz__result{display:none;margin-top:28px;font-family:'Caveat',cursive;
+  font-size:clamp(22px,4.6vw,28px);color:var(--glow-2)}
+.quiz__result.show{display:block}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(26px);
   transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -608,6 +679,30 @@ img{display:block;max-width:100%}
   <div class="stats__cap" id="daysYMD">dias juntos</div>
 </section>
 
+<!-- MAPA DE ESTRELAS -->
+<section class="starmap reveal">
+  <div class="starmap__sky" id="starSky"></div>
+  <div class="starmap__inner">
+    <div class="starmap__k">aquela noite</div>
+    <h2>O céu de <em>Belo Horizonte</em></h2>
+    <p class="starmap__sub">01 · 05 · 2024. Em algum lugar embaixo desse mesmo céu, duas pessoas que já tinham passado pelos mesmos lugares sem se notar, finalmente se cruzaram.</p>
+    <svg class="constellation" id="constellation" viewBox="0 0 300 220">
+      <polyline class="cl" points="150,55 110,18 65,18 35,48 35,90 150,195 265,90 265,48 235,18 190,18 150,55"></polyline>
+      <circle class="cs main" cx="150" cy="55" r="4"></circle>
+      <circle class="cs" cx="110" cy="18" r="3"></circle>
+      <circle class="cs" cx="65" cy="18" r="3"></circle>
+      <circle class="cs" cx="35" cy="48" r="3"></circle>
+      <circle class="cs" cx="35" cy="90" r="3"></circle>
+      <circle class="cs" cx="150" cy="195" r="3"></circle>
+      <circle class="cs" cx="265" cy="90" r="3"></circle>
+      <circle class="cs" cx="265" cy="48" r="3"></circle>
+      <circle class="cs" cx="235" cy="18" r="3"></circle>
+      <circle class="cs" cx="190" cy="18" r="3"></circle>
+    </svg>
+    <p class="starmap__cap">a estrela mais brilhante ali é a gente</p>
+  </div>
+</section>
+
 <!-- MAPA DE LUGARES -->
 <section class="places reveal">
   <div class="places__k">nosso mapa</div>
@@ -666,6 +761,35 @@ img{display:block;max-width:100%}
   <audio id="audioSina" src="musica/sina.mp3" preload="none"></audio>
 </section>
 
+<!-- NOSSO DICIONÁRIO -->
+<section class="dict reveal">
+  <div class="dict__k">glossário oficial</div>
+  <h2>O nosso <em>dicionário</em></h2>
+  <p class="dict__sub">Palavras que só fazem sentido pra gente.</p>
+  <div class="dict__list">
+    <div class="dict__item">
+      <p class="dict__term">Bell</p>
+      <p class="dict__def">Como o mundo te chama de apelido. Curto, mas carrega tudo que você é.</p>
+    </div>
+    <div class="dict__item">
+      <p class="dict__term">Line</p>
+      <p class="dict__def">O nome que você me deu, e que eu uso pra assinar cada cartinha daqui pra frente.</p>
+    </div>
+    <div class="dict__item">
+      <p class="dict__term">Neném</p>
+      <p class="dict__def">Não tem explicação lógica. É só o jeito que sai quando eu falo com você.</p>
+    </div>
+    <div class="dict__item">
+      <p class="dict__term">Sapucaí</p>
+      <p class="dict__def">Não é o desfile, é qualquer point depois de qualquer rolê. Virou lugar oficial.</p>
+    </div>
+    <div class="dict__item">
+      <p class="dict__term">[em construção]</p>
+      <p class="dict__def">Esse espaço é seu: me conta nossas outras palavras e eu coloco aqui.</p>
+    </div>
+  </div>
+</section>
+
 <!-- PEQUENAS COISAS -->
 <section class="little reveal">
   <div class="little__k">pequenas coisas</div>
@@ -678,6 +802,14 @@ img{display:block;max-width:100%}
     <p class="little__item">A cara de concentração que você faz pra decidir o que vai comer.</p>
     <p class="little__item">O jeitinho que você me chama quando quer atenção.</p>
   </div>
+</section>
+
+<!-- TÔ COM SAUDADE -->
+<section class="saudade reveal">
+  <div class="saudade__k">quando a saudade aperta</div>
+  <h2>Aperta aqui que eu <em>te conto</em></h2>
+  <button class="saudade__btn" id="saudadeBtn" type="button">tô com saudade</button>
+  <p class="saudade__msg" id="saudadeMsg">clica e recebe um pedacinho de carinho</p>
 </section>
 
 <!-- PERGUNTAS E RESPOSTAS -->
@@ -710,6 +842,20 @@ img{display:block;max-width:100%}
       <p class="qa__a">Exatamente aqui: ao lado dela, só que com mais quilômetros andados, mais risadas guardadas e, se Deus quiser, uma casa que a gente possa chamar de nossa.</p>
     </div>
   </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz reveal">
+  <div class="quiz__k">desafio</div>
+  <h2>O quanto você <em>me conhece</em>?</h2>
+  <p class="quiz__sub">5 perguntinhas sobre a nossa história. Sem cola.</p>
+  <div class="quiz__box" id="quizBox">
+    <div class="quiz__q" id="quizQ"></div>
+    <div class="quiz__opts" id="quizOpts"></div>
+    <div class="quiz__feedback" id="quizFeedback"></div>
+    <div class="quiz__progress" id="quizProgress"></div>
+  </div>
+  <div class="quiz__result" id="quizResult"></div>
 </section>
 
 <!-- FINALE -->
@@ -1042,6 +1188,114 @@ cells.forEach(async dt=>{
   const photos=key==='2024-05'?[EMBED_MAIO,...found]:(await probe(`fotos/${key}.jpg`)?[`fotos/${key}.jpg`,...found]:found);
   buildGallery(cell,photos,lab,key);
 });
+
+/* star map: random sky + constellation draw-in */
+(function(){
+  const sky=document.getElementById('starSky');
+  if(sky){
+    for(let i=0;i<70;i++){
+      const s=document.createElement('span');
+      const size=(Math.random()*2+1).toFixed(1);
+      s.style.width=size+'px';s.style.height=size+'px';
+      s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*100)+'%';
+      s.style.animationDelay=(Math.random()*3.4)+'s';
+      sky.appendChild(s);
+    }
+  }
+  const cons=document.getElementById('constellation');
+  if(cons){
+    const cio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.4});
+    cio.observe(cons);
+  }
+})();
+
+/* botão tô com saudade */
+(function(){
+  const btn=document.getElementById('saudadeBtn');
+  const msg=document.getElementById('saudadeMsg');
+  if(!btn||!msg) return;
+  const lines=[
+    'Tô pensando em você nesse exato segundo, sem motivo nenhum, só porque sim.',
+    'Se eu pudesse, já tava do seu lado agora, só pra ficar igual sempre.',
+    'Você é a primeira coisa que eu penso quando o dia fica estranho e eu quero que melhore.',
+    'Lembrei do seu jeito de rir e fiquei sorrindo igual bobo aqui.',
+    'Tô com vontade de te ver chegando de qualquer jeito, despenteada e tudo.',
+    'Queria estar contando bobagem com você nesse exato momento.',
+    'Tô com saudade do seu abraço, daqueles que faz o resto do mundo sumir.',
+    'Pensei em mandar mensagem só pra dizer que penso em você, e é isso.',
+    'Tava aqui imaginando a gente na Sapucaí de novo, só mais uma vez.',
+    'Tô com saudade de coisa nenhuma e de tudo ao mesmo tempo, que é exatamente como é com você.'
+  ];
+  let last=-1;
+  btn.addEventListener('click',()=>{
+    msg.classList.add('swap');
+    setTimeout(()=>{
+      let i=Math.floor(Math.random()*lines.length);
+      if(lines.length>1){ while(i===last) i=Math.floor(Math.random()*lines.length); }
+      last=i;
+      msg.textContent=lines[i];
+      msg.classList.remove('swap');
+    },220);
+  });
+})();
+
+/* quiz: o quanto você me conhece */
+(function(){
+  const box=document.getElementById('quizBox');
+  const qEl=document.getElementById('quizQ');
+  const optsEl=document.getElementById('quizOpts');
+  const fbEl=document.getElementById('quizFeedback');
+  const progEl=document.getElementById('quizProgress');
+  const resultEl=document.getElementById('quizResult');
+  if(!box) return;
+  const QUESTIONS=[
+    {q:'Em que cidade a gente se cruzou pela primeira vez?',opts:['Contagem','Belo Horizonte','Rio de Janeiro'],a:1},
+    {q:'Em que dia foi isso?',opts:['19 de maio de 2024','9 de maio de 2024','1º de maio de 2024'],a:2},
+    {q:'Depois de qualquer rolê, pra onde a gente sempre acaba indo?',opts:['Sapucaí','Centro','Pedro Leopoldo'],a:0},
+    {q:'Qual é a nossa música?',opts:['I Wanna Be Yours','Sina','Girassóis'],a:1},
+    {q:'Em que data ela disse sim?',opts:['10 de junho de 2024','19 de maio de 2024','5 de novembro de 2025'],a:2}
+  ];
+  let i=0,score=0;
+  function render(){
+    const item=QUESTIONS[i];
+    qEl.textContent=item.q;
+    fbEl.textContent='';
+    progEl.textContent=`${i+1} / ${QUESTIONS.length}`;
+    optsEl.innerHTML='';
+    item.opts.forEach((opt,idx)=>{
+      const b=document.createElement('button');
+      b.className='quiz__opt';b.type='button';b.textContent=opt;
+      b.addEventListener('click',()=>answer(idx,b));
+      optsEl.appendChild(b);
+    });
+  }
+  function answer(idx,btn){
+    const item=QUESTIONS[i];
+    [...optsEl.children].forEach(b=>b.disabled=true);
+    if(idx===item.a){
+      btn.classList.add('correct');score++;
+      fbEl.textContent='Isso! Acertou.';
+    }else{
+      btn.classList.add('wrong');
+      optsEl.children[item.a].classList.add('correct');
+      fbEl.textContent='Quase. Era essa outra ali.';
+    }
+    setTimeout(()=>{
+      i++;
+      if(i<QUESTIONS.length) render(); else finish();
+    },1100);
+  }
+  function finish(){
+    box.style.display='none';
+    resultEl.classList.add('show');
+    let msg;
+    if(score===QUESTIONS.length) msg=`${score}/${QUESTIONS.length}. Você presta atenção em tudo, até em mim.`;
+    else if(score>=3) msg=`${score}/${QUESTIONS.length}. Já manda bem, mas dá pra prestar mais atenção em mim ainda 😏`;
+    else msg=`${score}/${QUESTIONS.length}. Calma, eu te conto tudo de novo quantas vezes precisar.`;
+    resultEl.textContent=msg;
+  }
+  render();
+})();
 
 /* letter fab: envelope-opening modal */
 (function(){
