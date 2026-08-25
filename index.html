@@ -983,6 +983,86 @@ img{display:block;max-width:100%}
   </div>
 </div>
 
+<!-- ===================== NOTIFICAÇÃO PRA BELL ===================== -->
+<style>
+.notif-badge{
+  position:fixed;top:18px;right:18px;z-index:400;
+  display:flex;align-items:center;gap:10px;
+  padding:12px 18px 12px 14px;border-radius:999px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--brick),#e0603f);
+  color:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:600;font-size:14px;
+  box-shadow:0 8px 24px rgba(196,73,47,.45);
+  animation:notifPulse 1.6s ease-in-out infinite;
+}
+.notif-badge__icon{font-size:18px;line-height:1;animation:notifBlink 1.6s ease-in-out infinite}
+@keyframes notifPulse{
+  0%,100%{box-shadow:0 8px 24px rgba(196,73,47,.45);transform:scale(1)}
+  50%{box-shadow:0 8px 34px rgba(196,73,47,.85),0 0 0 8px rgba(196,73,47,.18);transform:scale(1.04)}
+}
+@keyframes notifBlink{0%,100%{opacity:1}50%{opacity:.35}}
+.notif-badge__dot{position:absolute;top:-3px;right:-3px;width:12px;height:12px;border-radius:50%;
+  background:#f2a94e;border:2px solid var(--ink);animation:notifBlink 1s ease-in-out infinite}
+@media (max-width:520px){
+  .notif-badge{top:12px;right:12px;padding:10px 14px 10px 12px;font-size:12px}
+}
+
+.notif-overlay{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(21,17,14,.4);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  opacity:0;pointer-events:none;transition:opacity .35s ease}
+.notif-overlay.show{opacity:1;pointer-events:auto}
+.notif-card{position:relative;width:min(480px,92vw);max-height:82vh;overflow-y:auto;
+  background:var(--ink-3);border:1px solid var(--line);border-radius:18px;
+  padding:36px 28px 30px;box-shadow:0 30px 70px rgba(0,0,0,.55);
+  transform:translateY(18px) scale(.97);transition:transform .35s ease}
+.notif-overlay.show .notif-card{transform:translateY(0) scale(1)}
+.notif-card__seal{font-size:30px;text-align:center;margin-bottom:6px;color:var(--brick)}
+.notif-card__close{position:absolute;top:10px;right:14px;width:30px;height:30px;border:none;
+  background:transparent;color:var(--taupe);font-size:22px;line-height:1;cursor:pointer}
+.notif-card__close:hover{color:var(--cream)}
+.notif-card__body{font-family:'Fraunces',serif;color:var(--cream);font-size:16px;line-height:1.75}
+.notif-card__body p{margin-bottom:14px}
+.notif-card__body .em{color:var(--glow);font-style:italic}
+.notif-card__sign{font-family:'Caveat',cursive;font-size:26px;color:var(--glow-2);margin-top:8px}
+</style>
+
+<button class="notif-badge" id="notifBadge" type="button" aria-label="Abrir mensagem">
+  <span class="notif-badge__dot"></span>
+  <span class="notif-badge__icon">💌</span>
+  <span class="notif-badge__text">1 nova notificação</span>
+</button>
+
+<div class="notif-overlay" id="notifOverlay">
+  <div class="notif-card" id="notifCard">
+    <button class="notif-card__close" id="notifClose" type="button" aria-label="Fechar">×</button>
+    <div class="notif-card__seal">❤</div>
+    <div class="notif-card__body">
+      <p>Bell,</p>
+      <p>eu preciso pedir desculpa. Eu errei feio quando tirei esse site do ar, mesmo que por pouco tempo, num momento de raiva que não tinha nada a ver com o tanto que eu te amo.</p>
+      <p>Você <span class="em">sempre foi</span> e <span class="em">sempre vai ser</span> a mulher da minha vida. Isso nunca mudou, nem por um segundo, e nunca vai mudar.</p>
+      <p>Eu te amo muito, muito mesmo. E eu não quero que você esqueça disso. Não quero que você esqueça da gente, nem de tudo que a gente já viveu: cada rua de BH, cada Sapucaí, cada dia sem graça que virou especial só porque você tava do meu lado.</p>
+      <p>Eu prometo: nunca mais vou cometer o erro de tirar esse site do ar, não importa o que aconteça entre a gente. Esse lugar é nosso, e ele fica. Aqui você sempre vai poder voltar pra lembrar de tudo que a gente já construiu.</p>
+      <p>Te amo, minha neném.</p>
+      <p class="notif-card__sign">sua Line ❤</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const badge=document.getElementById('notifBadge');
+  const overlay=document.getElementById('notifOverlay');
+  const closeBtn=document.getElementById('notifClose');
+  if(!badge||!overlay||!closeBtn) return;
+  function open(){overlay.classList.add('show')}
+  function close(){overlay.classList.remove('show')}
+  badge.addEventListener('click',open);
+  closeBtn.addEventListener('click',close);
+  overlay.addEventListener('click',(e)=>{if(e.target===overlay)close()});
+  document.addEventListener('keydown',(e)=>{if(e.key==='Escape')close()});
+})();
+</script>
+<!-- =================== FIM DA NOTIFICAÇÃO =================== -->
+
 <script>
 /* reveal on scroll */
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.16});
